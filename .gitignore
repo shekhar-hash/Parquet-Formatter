@@ -1,0 +1,5 @@
+.idea/
+ParquetFormatter.iml
+src/test/testResources/
+target/
+
