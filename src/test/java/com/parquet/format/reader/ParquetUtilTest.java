@@ -33,7 +33,6 @@ public class ParquetUtilTest {
     Path path = new Path(filePath);
     ParquetWriter<GenericData.Record> writer = null;
     // Creating ParquetWriter using builder
-    try {
       writer = AvroParquetWriter.
               <GenericData.Record>builder(path)
               .withRowGroupSize(ParquetWriter.DEFAULT_BLOCK_SIZE)
@@ -50,17 +49,7 @@ public class ParquetUtilTest {
         writer.write(record);
       }
 
-    }catch(IOException e) {
-      e.printStackTrace();
-    }finally {
-      if(writer != null) {
-        try {
-          writer.close();
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-    }
+      writer.close();
     return path;
   }
 
